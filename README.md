@@ -1,2 +1,3 @@
 #README
-This is sample.
+
+This is a sample project. 

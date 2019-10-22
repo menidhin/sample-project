@@ -1,0 +1,15 @@
+<div class = "review">
+	<p><%= review.ratings %></p>
+	<p class="review-comment" ><%= review.comment %> </p>
+
+	<% if user_signed_in? %>
+	  <% if review.user_id = current.user_id %>
+	  	<div class = "links btn-group">
+	  		<% link_to "edit", edit_products_review_path(review.product,review), class : "btn btn-custome" %>
+	  		<% link_to "delete", products_review_path(review.product,review), method: :delete, data: {confirm : "Are you sure"}, class : "btn btn-custome" %>
+	  	</div>
+	  <% end %>
+	<% end %>
+</div>	
+
+	  		

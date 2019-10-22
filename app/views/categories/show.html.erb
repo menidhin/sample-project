@@ -1,0 +1,31 @@
+
+<div class="container">
+
+	<h1>Category Name</h1>
+	<%= link_to "Back", categories_path , :class => "btn btn-primary" %>
+ 
+	<table class="table table-striped">
+		<thead>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Actions</th>
+		</thead>
+	
+		<tr>
+			<td><%= @category.name %></td>
+			<td><%= @category.description %></td>
+			<td>
+
+			<%= link_to "Edit", edit_category_path(@category), :class => "btn btn-warning" %>
+			<%= link_to "Delete", @category , method: :delete , data: { confirm: "Are you sure?" }, :class => "btn btn-danger" %>
+			</td>
+		</tr>
+	</table>		
+
+	<h2>Product List</h2>
+	<ul>
+		<% @category.products.each do |product| %>
+			<li> <%= product.name %> </li>
+		<% end %>
+	</ul>
+</div>		

@@ -1,0 +1,33 @@
+<div class="container">
+
+<h1>Product List</h1>
+<%= link_to "Create Product", new_product_path, :class => "btn btn-primary" %>
+
+<!--<%= link_to "Add Product Image", new_product_image_path, :class => "btn btn-primary" %>-->
+ 
+<table class="table table-striped">
+	<thead>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Category</th>
+		<th>Seller</th>
+		<th>Price</th>
+		<th>Actions</th>
+	</thead>
+	<% @products.each do |product| %>
+	<tr>
+		<td><%= product.name %></td>
+		<td><%= product.product_type %></td>
+		<td><%= product.try(:category).try(:name) %></td>
+		<td><%= product.try(:seller).try(:seller_name) %></td>
+		<td><%= product.price %></td>
+		<td>
+			<%= link_to "Show", product_path(product), :class => "btn btn-success" %>
+			<%= link_to "Edit", edit_product_path(product), :class => "btn btn-warning" %>
+			<%= link_to "Delete", product_path(product) , method: :DELETE , data: { confirm: "Are you sure?" }, :class => "btn btn-danger" %>
+		</td>
+	</tr>
+	<% end %>
+</table>
+	<%= will_paginate(@products) %>
+</div>

@@ -1,0 +1,40 @@
+<% if @review.present? %>
+	<% index = rand(100..1000) %>
+	<div class="col-sm-8 col-lg-12">
+		<div class="review-block">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="review-block-rate">
+						<div class="star-rating<%= index %>">
+				      <span class="fa fa-star" data-rating="1"></span>
+				      <span class="fa fa-star-o" data-rating="2"></span>
+				      <span class="fa fa-star-o" data-rating="3"></span>
+				      <span class="fa fa-star-o" data-rating="4"></span>
+				      <span class="fa fa-star-o" data-rating="5"></span>
+				      <input type="hidden" name="whatever<%= index %>" class="rating-value" value="<%= @review.number_of_stars %>">
+				    </div>
+					</div>
+					<div class="review-block-title">
+						<p>Review : <%= @review.review_body %> </p>
+					</div>
+					<div class="review-block-name">
+						<p>By: <%= @review.try(:user).try(:email) %></p>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>	
+	<script type="text/javascript">
+		var $star_rating<%= index %> = $('.star-rating<%= index %> .fa');
+		var SetRatingStar<%= index %> = function() {
+		  return $star_rating<%= index %>.each(function() {
+		    if (parseInt($star_rating<%= index %>.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+		      return $(this).removeClass('fa-star-o').addClass('fa-star');
+		    } else {
+		      return $(this).removeClass('fa-star').addClass('fa-star-o');
+		    }
+		  });
+		};
+		SetRatingStar<%= index %>();
+	</script>
+<% end %>

@@ -1,0 +1,73 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/*.star-ratings-sprite {
+	background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+	font-size: 0;
+	height: 21px;
+	line-height: 0;
+	overflow: hidden;
+	text-indent: -999em;
+	width: 110px;
+	margin: 0 auto;
+			  
+	&-rating {
+	 	background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+		background-position: 0 100%;
+		float: left;
+		height: 21px;
+		display:block;
+	}			  
+}*/
+ 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+body {font-family: 'Open Sans', sans-serif; font-size: 14px;}
+em { font-style: italic; }
+h1 { font-size: 24px; margin-bottom: 25px; font-weight: bold; text-transform: uppercase; }
+h2 { font-size: 16px; margin-bottom: 15px;} 
+
+.btn-grey{
+    background-color:#D8D8D8;
+	color:#FFF;
+}
+.rating-block{
+	background-color:#FAFAFA;
+	border:1px solid #EFEFEF;
+	padding:15px 15px 20px 15px;
+	border-radius:3px;
+}
+.bold{
+	font-weight:700;
+}
+.padding-bottom-7{
+	padding-bottom:7px;
+}
+
+.review-block{
+	background-color:#FAFAFA;
+	border:1px solid #EFEFEF;
+	padding:15px;
+	border-radius:3px;
+	margin-bottom:15px;
+}
+.review-block-name{
+	font-size:12px;
+	margin:10px 0;
+}
+.review-block-date{
+	font-size:12px;
+}
+.review-block-rate{
+	font-size:13px;
+	margin-bottom:15px;
+}
+.review-block-title{
+	font-size:15px;
+	font-weight:700;
+	margin-bottom:10px;
+}
+.review-block-description{
+	font-size:13px;
+}

@@ -1,0 +1,27 @@
+<div class="container">
+
+	<h1>Customers List</h1>
+	<%= link_to "Create new customer", new_customer_path, :class => "btn btn-primary" %>
+	 
+	<table class="table table-striped">
+		<thead>
+			<th>Customer Name</th>
+			<th>Product</th>
+			<th>City</th>
+			<th>Actions</th>
+		</thead>
+		<% @customers.each do |customer| %>
+			<tr>
+				<td><%= customer.customer_name %></td>
+				<td><%= customer.try(:product).try(:name) %></td>
+				<td><%= customer.city %></td>
+				<td>
+					<%= link_to "Show", customer_path(customer), :class => "btn btn-success" %>
+					<%= link_to "Edit", edit_customer_path(customer), :class => "btn btn-warning" %>
+					<%= link_to "Delete", customer_path(customer) , method: :delete , data: { confirm: "Are you sure?" }, :class => "btn btn-danger" %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+		<%= will_paginate(@customer) %>
+</div>

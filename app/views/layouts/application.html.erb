@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsCrudOperations</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<!-- <link rel="stylesheet" href="assets/stylesheets/style.css"> -->
+		<%= stylesheet_link_tag "style" %>
+		<style type="text/css">
+			.star-rating {
+			  line-height:32px;
+			  font-size:1.25em;
+			}
+			.nav-link a {
+				color: #fff;
+			}
+			
+			.fa-star{color: #ffc107;}
+		</style>
+  </head>
+
+  <body>
+  	<p class="notice"><%= notice %></p>
+  	<p class="alert"> <%= alert %> </p> 
+  	<div class= "container">
+			<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light my-2">
+  			<div class="navbar-brand" >
+  				<%#=  "7EDGE" %>
+				</div>	
+  			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+   				<ul class="navbar-nav mr-auto my-2 ">
+   					<div class="navbar-brand" >
+	        		<%= link_to "Products", "/products" %>
+	 	  				<%= link_to "Categories", "/categories" %>
+	   					<%= link_to "Customers", "/customers" %>
+	  					<%= link_to "Sellers", "/sellers" %>
+	  				</div>	
+  				</ul>
+  			</div>		
+  		</nav> -->
+  		<% if user_signed_in? %>
+	  		<nav class="navbar navbar-expand-lg navbar-default bg-default my-3">    
+				  <nav class="navbar navbar-light bg-light">
+	  					<%=  image_tag('https://cdn.7edge.com/images/7EDGE-logo.png')  %>
+					</nav>
+
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				    <span class="navbar-toggler-icon"></span>
+				  </button>
+				  <div class="collapse navbar-collapse" id="navbarNav">
+				    <ul class="navbar-nav">
+				      <li class="nav-item active">
+				      	<div class="nav-link btn btn-info color:#ffff">
+					        <%= link_to "Home", "/" %>
+					      </div>  		
+				      </li>
+				      <li class="nav-item ml-2 mr-2">
+				      	<div class="nav-link btn btn-info">
+					        <%= link_to "Products", "/products" %>
+					      </div>  		
+				      </li>
+				      <% if current_user.has_role? "admin" %>
+					      <li class="nav-item mr-2 ">
+					      	<div class="nav-link btn btn-info">
+						 	  		<%= link_to "Categories", "/categories" %>
+						 	  	</div>	
+					      </li>
+					    <% end %>
+					    <% if current_user.has_role? "admin" %>
+					      <li class="nav-item mr-2">
+					      	<div class="nav-link btn btn-info">
+						   			<%= link_to "Customers", "/customers" %>
+						   		</div>	
+					      </li>
+					    <% end %>  
+				      <% if current_user.has_role? "admin" %>
+					      <li class="nav-item">
+					      	<div class="nav-link btn btn-info">
+						  			<%= link_to "Sellers", "/sellers" %>
+						  		</div>	
+					      </li>
+					    <% end %>
+					    <% if current_user.has_role? "admin" %>
+					      <li class="nav-item ml-2">
+					      	<div class="nav-link btn btn-info">
+						  			<%= link_to "Users", "/users" %>
+						  		</div>	
+					      </li>
+					     <% end %>
+				    </ul>
+				  </div>
+				  <% if user_signed_in? %>
+					  <div class="nav-link btn btn-info">
+					    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+					  </div>  
+					<% end %>
+				</nav>
+			<% end %>
+   	 <%= yield %>
+  	</div>
+  </body>
+</html>
